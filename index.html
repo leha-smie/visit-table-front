@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="dist/css/bootstrap.css">
+	<link rel="stylesheet" href="style.css">
+	<title>Журнал</title>
+</head>
+
+<body>
+	<h3>График посещений занятий у лучшего специалиста России!!!</h3>
+	<div class="table-responsive">
+		<table class="table table-bordered table-hover container">
+			<thead>
+				<tr class="table-dark">
+					<th scope="col"></th>
+					<th>
+						<div class="th-name">ФИО</div>
+					</th>
+					<th scope="col">Посещение</th>
+					<th scope="col">осталось занятий</th>
+					<th scope="col">осталось дней</th>
+					<th scope="col">Дата покупки</th>
+					<th scope="col">Дата окончания</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</div>
+	<div class="div-send container">
+		<button class="button-send">Списать тренировку</button>
+	</div>
+	<div class="flex">
+		<form class="row g-3 form-add">
+			<input type="text" name="form" class="form-input" placeholder="введите имя" value="">
+			<div class="box-err">
+				<p class="err">Поле должно содержать Фамилию, Имя сокращенно с точкой</p>
+			</div>
+			<button class="btn btn-primary" type="submit" name="form">записать подопытного</button>
+		</form>
+	</div>
+	<!-- <div class="field"></div> -->
+
+
+	<script src="js2.js"></script>
+</body>
+
+</html>
