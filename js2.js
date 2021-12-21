@@ -87,6 +87,7 @@
 const clientsBase = {
 	clients: new Promise((resolve, reject) => {
 		const clients = fetch('http://ksusha.na4u.ru/clients')
+			// const clients = fetch('http://localhost:3000/clients')
 			.then(res => res.json())
 			.catch(err => console.log(err));
 		resolve(clients);
@@ -190,14 +191,26 @@ const table = {
 	addEventsBtnSend() {
 		this.btnSend.addEventListener('click', () => {
 			const checkFields = document.querySelectorAll('.input-check');
+			let arrId = [];
 			checkFields.forEach((element, index) => {
 				if (element.checked) {
-					this.clientsBase.change(index + 1);
-					this.clearTable();
-					this.createFieldTable(this.clientsBase.getClients());
+					arrId.push(index + 1);
 				}
 			});
 
+			fetch('http://ksusha.na4u.ru/increaseTrening', {
+				// fetch('http://localhost:3000/increaseTrening', {
+				method: 'PUT', // или 'PUT'
+				body: JSON.stringify(arrId),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+				.then(data => data.json())
+				.then(data => {
+					this.clearTable();
+					this.createFieldTable(data);
+				});
 		})
 	},
 	clearTable() {
@@ -235,6 +248,7 @@ const createForm = {
 		this.table.clearTable();
 		const client = this.clientsBase.addClient(name);
 		fetch('http://ksusha.na4u.ru/addClient', {
+			// fetch('http://localhost:3000/addClient', {
 			method: 'POST', // или 'PUT'
 			body: JSON.stringify(client), // данные могут быть 'строкой' или {объектом}!
 			headers: {
